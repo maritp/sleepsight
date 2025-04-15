@@ -6,6 +6,7 @@
 %
 % c Marit Petzka, University of Hamburg
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 clear
 close all
 
@@ -90,7 +91,7 @@ for isub = 1:numel(settings_.nsub)
 
         if ~isempty(dat.artifacts)
             art_def = hvn_createBnrySignal(dat.artifacts,...
-                dat_trl.sampleinfo(end,2)); % get logical vector
+                dat_trl.sampleinfo(end,2)); % get logical artifact vector
 
             idx_trl_excl = zeros(1,size(dat_trl.sampleinfo,1));
 
@@ -114,8 +115,6 @@ for isub = 1:numel(settings_.nsub)
     cfg.method = 'mtmfft';
     cfg.output = 'pow';
     cfg.foi = settings_.FOI(1):settings_.freqres:settings_.FOI(2);
-    %cfg.foilim = settings_.FOI;
-    %cfg.foilim = settings_.FOI;
     cfg.taper = 'hanning';
     cfg.pad = 'nextpow2';
     cfg.keeptrials = 'yes';
@@ -123,7 +122,6 @@ for isub = 1:numel(settings_.nsub)
     fft_tmp = ft_freqanalysis(cfg, dat_trl);
 
     %% save
-    %fft_tmp = rmfield(fft_tmp, {'powspctrm' 'cumsumcnt' 'cumtapcnt'});
     fft_{isub} = fft_tmp;
 
     %% FOOOOOOOFFFF

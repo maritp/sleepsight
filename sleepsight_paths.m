@@ -16,8 +16,9 @@ out.eegdir = fullfile(basedir, 'eeg');
 out.basedir = basedir;
 
 % directory to fieldtrip 
-fieldtripv = 'fieldtrip-20220617';
-out.fieldtripdir = fullfile(basedir, 'eeg', fieldtripv);
+ftv = 'fieldtrip-20220617';
+ftdir = '/Users/petzka/Documents/projects/MPI';
+out.fieldtripdir = fullfile(ftdir, ftv);
 if contains(path,'fieldtrip')
     ft_defaults
 else
